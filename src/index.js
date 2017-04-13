@@ -1,6 +1,6 @@
 /**
  * OmitJSforCSSPlugin
- * @description : This plugin will omit bundled JS files, for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
+ * @description : This plugin will omit bundled JS files, for dependencies that are exclusively CSS which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
  */
 
 const chalk = require('chalk');
@@ -44,7 +44,7 @@ OmitJSforCSSPlugin.prototype.omitFiles = function(omitted, compilation){
  * @param {Object} compilation
  */
 OmitJSforCSSPlugin.prototype.findOmissibleFiles = function(compilation){
-  // For every chunk / entry point figure out if its all CSS based
+  // Every chunk / entry point
   compilation.chunks.forEach((chunk) => {
     // Chunks origin files. ex. origin entry point, ![] entry
     let resourceOrigin = {};

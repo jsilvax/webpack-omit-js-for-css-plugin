@@ -33,8 +33,9 @@ module.exports = {
 }
 ```
 In both examples Webpack would output:
-common.styles.js (Not Needed)
-common.styles.css
+`` common.styles.js (Not Needed)``
+``common.styles.css``
+
 
 ## Installation
 ```bash
