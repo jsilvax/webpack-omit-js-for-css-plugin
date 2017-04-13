@@ -1,10 +1,10 @@
 # Webpack Omit JS for CSS Plugin
 
-This plugin will omit bundled JS files, for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
+This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
 
 ## Rationale
 
-In certain cases, you may want to organize some of your CSS dependencies into single files or entry arrays within Webpack. Even though Extract-text-plugin extracts CSS into its own .css file, Webpack will still generate a js file that will never be needed. This plugin will omit these types of files before Webpack begins its emitting step, so that you don't have to manually remove them. This plugin is especially useful for Webpack bundles that use a hash in the the filename, as these change on every compilation.
+In certain cases, you may want to organize some of your CSS dependencies into single files or entry arrays within Webpack. Even though Extract-text-plugin extracts CSS into its own .css file, Webpack will still generate a js file that will never be needed. This plugin will omit these types of files before Webpack begins its emitting step, so that you don't have to manually remove them. This plugin is especially useful for Webpack bundles that use a hash in the filename, as these change on every compilation.
 
 Example as a file
 ```js
@@ -63,5 +63,5 @@ new OmitJSforCSSPlugin(options: object)
 |**`cacheOnWatch`**|`{Boolean}`|false|Whether it should cache the JS filenames that should be omitted, on watch|
 |**`verbose`**|`{Boolean}`|false|Whether it should display which files will be omitted to the console|
 
-## Additional Notes 
-:fire: :fire: While this plugin supports caching the omissible files on watch, it's not ideal to use this plugin during Development. It's highly recommended you only include this plugin when you're building for production. :fire: :fire:
+## :fire: Additional Notes :fire:
+While this plugin supports caching the omissible files on watch, it's not ideal to use this plugin during Development. It's highly recommended you only include this plugin when you're building for production. 
