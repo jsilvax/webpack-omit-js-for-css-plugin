@@ -1,6 +1,6 @@
 /**
  * OmitJSforCSSPlugin
- * @description : This plugin will omit the JS entry files, for CSS only dependencies, that become obsolete once extract-text-plugin extracts all inlined CSS into its own .css file.
+ * @description : This plugin will omit bundled JS files, for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
  */
 
 const chalk = require('chalk');
