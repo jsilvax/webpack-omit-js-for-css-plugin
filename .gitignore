@@ -1,4 +1,4 @@
 node_modules/
-coverage/lcov-report
+coverage/
 test/fixtures/**/dir
 .nyc_output/
