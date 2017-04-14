@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin.svg?branch=master)](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin) [![Coverage Status](https://coveralls.io/repos/github/jsilvax/webpack-omit-js-for-css-plugin/badge.svg)](https://coveralls.io/github/jsilvax/webpack-omit-js-for-css-plugin)
+
 # Webpack Omit JS for CSS Plugin
 
 This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file

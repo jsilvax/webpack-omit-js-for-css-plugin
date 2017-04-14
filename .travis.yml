@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js: 6
+cache:
+  yarn : true
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+notifications:
+  email: false
+before_script:
+  - npm prune
+script:
+  - npm run test:cover
+after_success:
+  - npm run report-coverage
