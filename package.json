@@ -9,8 +9,10 @@
   "scripts": {
     "test": "mocha --timeout 10000 test/*.test.js",
     "watch:test": "mocha --timeout 10000 --watch test/*.test.js",
-    "test:cover" : "nyc npm run test",
-    "cover:lcovonly": "nyc report --reporter=lcovonly"
+    "test:cover": "nyc npm run test",
+    "cover:lcovonly": "nyc report --reporter=lcovonly",
+    "precommit" : "npm run test:cover",
+    "prepush" : "npm run test:cover"
   },
   "keywords": [
     "webpack",
@@ -31,6 +33,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.27.3",
     "extract-text-webpack-plugin": "^2.1.0",
+    "husky": "^0.13.3",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1",
@@ -45,7 +48,7 @@
     "include": [
       "src/**.js"
     ],
-    "reporter" : [
+    "reporter": [
       "text",
       "lcov"
     ],
