@@ -3,3 +3,4 @@ coverage/
 test/fixtures/**/dir
 .nyc_output/
 .coveralls.yml
+*.log

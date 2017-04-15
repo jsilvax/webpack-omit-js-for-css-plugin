@@ -9,9 +9,10 @@
   "scripts": {
     "test": "mocha --timeout 10000 test/*.test.js",
     "watch:test": "mocha --timeout 10000 --watch test/*.test.js",
-    "test:cover": "nyc npm run test",
+    "test:cover": "nyc npm test",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "precommit": "npm run test:cover"
+    "prepush": "npm run test:cover",
+    "release" : "npm run test:cover && git tag $npm_package_version && git commit -am $npm_package_version && git push && git push --tags && npm publish"
   },
   "keywords": [
     "webpack",
