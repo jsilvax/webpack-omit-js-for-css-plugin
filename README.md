@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin.svg?branch=master)](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin) [![Coverage Status](https://coveralls.io/repos/github/jsilvax/webpack-omit-js-for-css-plugin/badge.svg)](https://coveralls.io/github/jsilvax/webpack-omit-js-for-css-plugin)
+[![npm version](https://img.shields.io/npm/v/webpack-omit-js-for-css-plugin.svg)](https://www.npmjs.com/package/webpack-omit-js-for-css-plugin) [![Build Status](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin.svg?branch=master)](https://travis-ci.org/jsilvax/webpack-omit-js-for-css-plugin) [![Coverage Status](https://coveralls.io/repos/github/jsilvax/webpack-omit-js-for-css-plugin/badge.svg)](https://coveralls.io/github/jsilvax/webpack-omit-js-for-css-plugin)
 
 # Webpack Omit JS for CSS Plugin
 
