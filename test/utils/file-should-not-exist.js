@@ -1,4 +1,4 @@
-const chai = require('chai').expect;
+const expect = require('chai').expect;
 const fs = require('fs');
 const path = require('path');
 /**
@@ -8,8 +8,8 @@ const path = require('path');
 module.exports = function(dirPath, fileName){
 	const dirDirectoryExists = fs.existsSync(dirPath);
 	const jsEntryFileExists = fs.existsSync(path.join(dirPath, fileName));
-	chai(dirPath).to.be.a('string');
-	chai(fileName).to.be.a('string');
-	chai(dirDirectoryExists).to.be.equal(true);
-	chai(jsEntryFileExists).to.be.equal(false);
+	expect(dirPath).to.be.a('string');
+	expect(fileName).to.be.a('string');
+	expect(dirDirectoryExists).to.be.equal(true);
+	expect(jsEntryFileExists).to.be.equal(false);
 };

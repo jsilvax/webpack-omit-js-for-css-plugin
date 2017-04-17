@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const chai = require('chai').expect;
 const path = require('path');
 const rimraf = require('rimraf');
 const fileShouldExist = require('./utils/file-should-exist.js');
@@ -14,7 +13,7 @@ const externalDirPath = path.join(__dirname, '/fixtures/should-not-omit/external
 const mixedOptions = require('./fixtures/should-not-omit/mixed-dep/webpack.config.js');
 const mixedDirPath = path.join(__dirname, '/fixtures/should-not-omit/mixed-dep/dir');
 
-describe('JS dependencies that shouldnt be omitted', () => {
+describe('JS Dependencies that shouldn\'t be omitted', () => {
 
 	describe('Internal', () => {
 		

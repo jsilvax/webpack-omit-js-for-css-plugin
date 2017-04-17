@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const chai = require('chai').expect;
 const path = require('path');
 const rimraf = require('rimraf');
 const options = require('./fixtures/js-file-entry/webpack.config.js');
