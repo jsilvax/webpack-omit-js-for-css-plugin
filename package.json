@@ -1,11 +1,16 @@
 {
   "name": "webpack-omit-js-for-css-plugin",
   "version": "0.1.0",
-  "description": "This plugin will omit bundled JS files, for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file",
+  "description": "This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file",
   "main": "src/index.js",
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsilvax/webpack-omit-js-for-css-plugin.git"
+  }, 
+  "homepage": "https://github.com/jsilvax/webpack-omit-js-for-css-plugin",
   "scripts": {
     "test": "mocha --timeout 10000 test/*.test.js",
     "watch:test": "mocha --timeout 10000 --watch test/*.test.js",
