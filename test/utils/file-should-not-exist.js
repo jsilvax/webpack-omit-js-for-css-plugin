@@ -5,7 +5,7 @@ const path = require('path');
  * @param dirPath {String} The directory path
  * @param fileName {String} The filename
  */
-module.exports = function(dirPath, fileName){
+module.exports = function(dirPath, fileName) {
 	const dirDirectoryExists = fs.existsSync(dirPath);
 	const jsEntryFileExists = fs.existsSync(path.join(dirPath, fileName));
 	expect(dirPath).to.be.a('string');

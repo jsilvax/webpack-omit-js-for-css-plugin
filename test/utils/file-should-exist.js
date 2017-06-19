@@ -5,7 +5,7 @@ const fs = require('fs');
  * @param dirPath {String} The directory path
  * @param fileName {String} The filename
  */
-module.exports = function(dirPath, fileName){
+module.exports = function(dirPath, fileName) {
 	expect(dirPath).to.be.a('string');
 	expect(fileName).to.be.a('string');
 	const dirDirectoryExists = fs.existsSync(dirPath);

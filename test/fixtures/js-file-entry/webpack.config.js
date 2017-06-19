@@ -3,25 +3,24 @@ const OmitJSforCSSPlugin = require('../../../src/index.js');
 const path = require('path');
 
 module.exports = {
-	entry : {
-		'b' : path.join(__dirname, 'styles.js')
+	entry: {
+		b: path.join(__dirname, 'styles.js')
 	},
-	output : {
-		filename : '[name].js',
-		path : path.join(__dirname, '/dir')
+	output: {
+		filename: '[name].js',
+		path: path.join(__dirname, '/dir')
 	},
-	module : {
-		rules : [{
-	        test: /\.css$/,
-	        use: ExtractTextPlugin.extract({
-	          fallback: "style-loader",
-	          use: "css-loader"
-	        })
-	    }],
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: 'css-loader'
+				})
+			}
+		]
 	},
-	plugins : [
-		new ExtractTextPlugin({ filename : '[name].css' }),
-		new OmitJSforCSSPlugin()
-	],
-	stats : 'none'
+	plugins: [new ExtractTextPlugin({ filename: '[name].css' }), new OmitJSforCSSPlugin()],
+	stats: 'none'
 };

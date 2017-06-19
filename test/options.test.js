@@ -1,7 +1,7 @@
 const OmitJSforCSSPlugin = require('../src/index.js');
 const expect = require('chai').expect;
 const assert = require('chai').assert;
-const stdout = require("test-console").stdout;
+const stdout = require('test-console').stdout;
 const rimraf = require('rimraf');
 const webpack = require('webpack');
 const fileShouldExist = require('./utils/file-should-exist.js');
@@ -18,46 +18,55 @@ const cacheOnWatchOptions = require('./fixtures/options/cache-on-watch/webpack.c
 const cacheOnWatchDirPath = path.join(__dirname, '/fixtures/options/cache-on-watch/dir');
 
 describe('Options', () => {
-
 	describe('Argument', () => {
-		it('should throw if an invalid argument is passed', (done) => {
+		it('should throw if an invalid argument is passed', done => {
 			const errorMsg = 'OmitJSforCSSPlugin only takes an options "object" as an argument';
-			expect(() => { new OmitJSforCSSPlugin(5) }).to.throw(errorMsg);
-			expect(() => { new OmitJSforCSSPlugin('verbose') }).to.throw(errorMsg);
-			expect(() => { new OmitJSforCSSPlugin(null) }).to.throw(errorMsg);
-			expect(() => { new OmitJSforCSSPlugin([]) }).to.throw(errorMsg);
+			expect(() => {
+				new OmitJSforCSSPlugin(5);
+			}).to.throw(errorMsg);
+			expect(() => {
+				new OmitJSforCSSPlugin('verbose');
+			}).to.throw(errorMsg);
+			expect(() => {
+				new OmitJSforCSSPlugin(null);
+			}).to.throw(errorMsg);
+			expect(() => {
+				new OmitJSforCSSPlugin([]);
+			}).to.throw(errorMsg);
 			done();
 		});
 
-		it('should not throw if a correct argument is passed', (done) => {
-			expect(() => { new OmitJSforCSSPlugin({}) }).to.not.throw();
+		it('should not throw if a correct argument is passed', done => {
+			expect(() => {
+				new OmitJSforCSSPlugin({});
+			}).to.not.throw();
 			done();
 		});
 	});
 
 	describe('Preview', () => {
-		beforeEach((done) => {
+		beforeEach(done => {
 			rimraf(previewDirPath, () => {
 				done();
 			});
 		});
 
-		it('should display the files that would be omitted', (done) => {
+		it('should display the files that would be omitted', done => {
 			let inspect = stdout.inspect();
-			
+
 			webpack(previewOptions, () => {
 				inspect.restore();
-				
+
 				assert.deepEqual(inspect.output, [
-					"\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n",
-					"\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n"
+					'\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n',
+					'\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n'
 				]);
 
 				done();
 			});
 		});
 
-		it('should not omit files', (done) => {
+		it('should not omit files', done => {
 			let ignore = stdout.ignore();
 			webpack(previewOptions, () => {
 				ignore();
@@ -66,25 +75,24 @@ describe('Options', () => {
 				done();
 			});
 		});
-
-	});		
+	});
 
 	describe('Verbose', () => {
-		before((done) => {
+		before(done => {
 			rimraf(verboseDirPath, () => {
 				done();
-			});			
+			});
 		});
 
-		it('should display the files that are omitted to console', (done) => {
+		it('should display the files that are omitted to console', done => {
 			let inspect = stdout.inspect();
 
 			webpack(verboseOptions, () => {
 				inspect.restore();
 
 				assert.deepEqual(inspect.output, [
-					"\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n",
-					"\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n"
+					'\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n',
+					'\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n'
 				]);
 
 				done();
@@ -93,18 +101,18 @@ describe('Options', () => {
 	});
 
 	describe('cacheOnWatch', () => {
-		before((done) => {
+		before(done => {
 			rimraf(cacheOnWatchDirPath, () => {
 				webpack(cacheOnWatchOptions, () => {
 					done();
 				});
 			});
 		});
-		
-		it('should only omit files which were cached', (done) => {
+
+		it('should only omit files which were cached', done => {
 			let cacheOnWatchOptionsSource = Object.assign({}, cacheOnWatchOptions);
 			cacheOnWatchOptionsSource.entry.c = [path.join(cacheOnWatchDirPath, '../../shared/three.css')];
-			
+
 			webpack(cacheOnWatchOptionsSource, () => {
 				// These are the files omiting from cache
 				fileShouldNotExist(cacheOnWatchDirPath, 'b.js');
@@ -114,7 +122,6 @@ describe('Options', () => {
 				fileShouldExist(cacheOnWatchDirPath, 'c.js.map');
 				done();
 			});
-		})
+		});
 	});
-
 });
