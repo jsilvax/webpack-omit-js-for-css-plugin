@@ -31,8 +31,8 @@
   "author": "Jessica Silva",
   "license": "MIT",
   "peerDependencies": {
-    "extract-text-webpack-plugin": "^2.1.0",
-    "webpack": "^2.2.0"
+    "extract-text-webpack-plugin": "^3.0.0",
+    "webpack": "^3.5.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
