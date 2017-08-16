@@ -3,8 +3,6 @@
  * @description : This plugin will omit bundled JS files, for dependencies that are exclusively CSS which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file
  */
 
-const chalk = require('chalk');
-
 /**
  * @param {Object} options - Configurable options
  * @constructor
@@ -31,9 +29,9 @@ function OmitJSforCSSPlugin(options) {
  */
 OmitJSforCSSPlugin.prototype.omitFiles = function(omitted, compilation) {
   if (this.options.preview) {
-    console.log(chalk.bold(chalk.red('PREVIEW')) + chalk.grey(' File to be omitted for ') + chalk.bold(chalk.green(omitted.chunkName)) + ' : ' + chalk.bold(chalk.green(omitted.filename)));
+    console.log(`PREVIEW File to be omitted for ${omitted.chunkName} : ${omitted.filename}`);
   } else {
-    this.options.verbose && console.log(chalk.grey('File Omitted for ') + chalk.bold(chalk.green(omitted.chunkName)) + chalk.grey(' : ') + chalk.bold(chalk.green(omitted.filename)));
+    this.options.verbose && console.log(`File omitted for ${omitted.chunkName} : ${omitted.filename}`);
     delete compilation.assets[omitted.filename];
   }
 };

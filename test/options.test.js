@@ -58,8 +58,8 @@ describe('Options', () => {
 				inspect.restore();
 
 				assert.deepEqual(inspect.output, [
-					'\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n',
-					'\u001b[1m\u001b[31mPREVIEW\u001b[39m\u001b[22m\u001b[90m File to be omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m : \u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n'
+					'PREVIEW File to be omitted for b : b.js\n',
+					'PREVIEW File to be omitted for b : b.js.map\n'
 				]);
 
 				done();
@@ -91,8 +91,8 @@ describe('Options', () => {
 				inspect.restore();
 
 				assert.deepEqual(inspect.output, [
-					'\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js\u001b[39m\u001b[22m\n',
-					'\u001b[90mFile Omitted for \u001b[39m\u001b[1m\u001b[32mb\u001b[39m\u001b[22m\u001b[90m : \u001b[39m\u001b[1m\u001b[32mb.js.map\u001b[39m\u001b[22m\n'
+					'File omitted for b : b.js\n',
+					'File omitted for b : b.js.map\n'
 				]);
 
 				done();

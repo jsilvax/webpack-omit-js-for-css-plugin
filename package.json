@@ -47,9 +47,7 @@
     "test-console": "^1.0.0",
     "webpack": "^3.5.5"
   },
-  "dependencies": {
-    "chalk": "^2.1.0"
-  },
+  "dependencies": {},
   "nyc": {
     "include": [
       "src/**.js"
