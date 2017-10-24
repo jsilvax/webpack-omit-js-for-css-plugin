@@ -59,7 +59,7 @@ OmitJSforCSSPlugin.prototype.findOmissibleFiles = function(compilation) {
         return;
       }
       module.fileDependencies.forEach(filepath => {
-        if (!resourceOrigin[filepath] && !/(\bnode_modules\b)/.test(filepath)) {
+        if (!resourceOrigin[filepath] && !/(\bnode_modules\b)/.test(filepath) && /\.(css|js)/g.test(filepath)) {
           /\.(css)$/i.test(filepath) ? assetTypeCount.css++ : assetTypeCount.internal++;
         }
       });
