@@ -54,12 +54,12 @@ OmitJSforCSSPlugin.prototype.findOmissibleFiles = function(compilation) {
     });
 
     // Each entry point will have its own dependencies, based on the files inner deps or the array deps in entry
-    chunk.modules.forEach(module => {
+    chunk.forEachModule(module => {
       if (!Array.isArray(module.fileDependencies)) {
         return;
       }
       module.fileDependencies.forEach(filepath => {
-        if (!resourceOrigin[filepath] && !/(\bnode_modules\b)/.test(filepath) && /\.(css|js)/g.test(filepath)) {
+        if (!resourceOrigin[filepath] && !/(\bnode_modules\b)/.test(filepath) && /\.(css|js)$/g.test(filepath)) {
           /\.(css)$/i.test(filepath) ? assetTypeCount.css++ : assetTypeCount.internal++;
         }
       });

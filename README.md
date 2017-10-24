@@ -41,7 +41,11 @@ In both examples Webpack would output:
 
 ## Installation
 ```bash
+// For Webpack v3.x
 npm install --save-dev webpack-omit-js-for-css-plugin
+
+// For Webpack v2.x
+npm install --save-dev webpack-omit-js-for-css-plugin@1.0.2
 ```
 ## Usage
 
