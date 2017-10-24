@@ -1,6 +1,6 @@
 {
   "name": "webpack-omit-js-for-css-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file",
   "main": "src/index.js",
   "directories": {
