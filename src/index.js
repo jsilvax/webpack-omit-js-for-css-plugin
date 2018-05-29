@@ -38,18 +38,28 @@ OmitJSforCSSPlugin.prototype.omitFiles = function (omitted, compilation) {
  * @function findOmissibleFiles
  * @param {Object} compilation
  */
+/**
+ * @function findOmissibleFiles
+ * @param {Object} compilation
+ */
 OmitJSforCSSPlugin.prototype.findOmissibleFiles = function (compilation) {
 	// Every chunk / entry point
 	compilation.chunks.forEach(chunk => {
+		let resourceOrigin = {};
 		let assetTypeCount = { internal: 0, css: 0 };
+
+		if (chunk.entryModule) {
+			resourceOrigin[chunk.entryModule.resource] = true;
+		}
 
 		// Each entry point will have its own dependencies, based on the files inner deps or the array deps in entry
 		Array.from(chunk.modulesIterable, module => {
-			if (!Array.isArray(module.dependencies)) return;
-
-			module.dependencies.forEach(({ request }) => {
-				if (!/ (\bnode_modules\b) /.test(request) && /\.(css|js)$/g.test(request)) {
-					/\.(css)$/i.test(request) ? assetTypeCount.css++ : assetTypeCount.internal++;
+			module.dependencies.forEach(({ module }) => {
+				if (module) {
+					const { resource } = module;
+					if (resource && !resourceOrigin[resource] && !/ (\bnode_modules\b) /.test(resource) && /\.(css|js)$/g.test(resource)) {
+						/\.(css)$/i.test(resource) ? assetTypeCount.css++ : assetTypeCount.internal++;
+					}
 				}
 			});
 		});
