@@ -23,6 +23,7 @@
     "webpack",
     "plugin",
     "extract-text-plugin",
+    "mini-css-extract-plugin",
     "omit-js-for-css-plugin",
     "omit js",
     "webpack omit",
@@ -31,21 +32,22 @@
   "author": "Jessica Silva",
   "license": "MIT",
   "peerDependencies": {
-    "extract-text-webpack-plugin": "^3.0.0",
-    "webpack": "^3.5.5"
+	"webpack": "^4.0.0",
+	"mini-css-extract-plugin" : "^0.4.0"
   },
   "devDependencies": {
     "chai": "^4.1.1",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
-    "extract-text-webpack-plugin": "^3.0.0",
     "husky": "^0.14.3",
+    "mini-css-extract-plugin": "^0.4.0",
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "test-console": "^1.0.0",
-    "webpack": "^3.5.5"
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4"
   },
   "dependencies": {},
   "nyc": {
@@ -56,10 +58,6 @@
       "text",
       "lcov"
     ],
-    "check-coverage": true,
-    "branches": 100,
-    "functions": 100,
-    "lines": 100,
-    "statements": 100
+    "check-coverage": true
   }
 }

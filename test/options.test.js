@@ -14,9 +14,6 @@ const previewDirPath = path.join(__dirname, '/fixtures/options/preview/dir');
 const verboseOptions = require('./fixtures/options/verbose/webpack.config.js');
 const verboseDirPath = path.join(__dirname, '/fixtures/options/verbose/dir');
 
-const cacheOnWatchOptions = require('./fixtures/options/cache-on-watch/webpack.config.js');
-const cacheOnWatchDirPath = path.join(__dirname, '/fixtures/options/cache-on-watch/dir');
-
 describe('Options', () => {
 	describe('Argument', () => {
 		it('should throw if an invalid argument is passed', done => {
@@ -100,28 +97,4 @@ describe('Options', () => {
 		});
 	});
 
-	describe('cacheOnWatch', () => {
-		before(done => {
-			rimraf(cacheOnWatchDirPath, () => {
-				webpack(cacheOnWatchOptions, () => {
-					done();
-				});
-			});
-		});
-
-		it('should only omit files which were cached', done => {
-			let cacheOnWatchOptionsSource = Object.assign({}, cacheOnWatchOptions);
-			cacheOnWatchOptionsSource.entry.c = [path.join(cacheOnWatchDirPath, '../../shared/three.css')];
-
-			webpack(cacheOnWatchOptionsSource, () => {
-				// These are the files omiting from cache
-				fileShouldNotExist(cacheOnWatchDirPath, 'b.js');
-				fileShouldNotExist(cacheOnWatchDirPath, 'b.js.map');
-				// Since findOmissibleFiles wouldn't run, these would exist
-				fileShouldExist(cacheOnWatchDirPath, 'c.js');
-				fileShouldExist(cacheOnWatchDirPath, 'c.js.map');
-				done();
-			});
-		});
-	});
 });

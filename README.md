@@ -41,11 +41,11 @@ In both examples Webpack would output:
 
 ## Installation
 ```bash
-// For Webpack v3.x
+// For Webpack v4.x
 npm install --save-dev webpack-omit-js-for-css-plugin
 
-// For Webpack v2.x
-npm install --save-dev webpack-omit-js-for-css-plugin@1.0.2
+// For Webpack v3.x
+npm install --save-dev webpack-omit-js-for-css-plugin@2.0.0
 ```
 ## Usage
 
@@ -58,7 +58,7 @@ module.exports = {
 	]
 }
 ```
-> Note: [ExtractTextPlugin](https://github.com/webpack-contrib/extract-text-webpack-plugin "ExtractTextPlugin") is a Peer Dependency. You will need to configure that as you normally would in your webpack.config.js
+> Note: [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin "MiniCssExtractPlugin") is a Peer Dependency. You will need to configure that as you normally would in your webpack.config.js
 
 ## Options
 ```js
@@ -67,8 +67,7 @@ new OmitJSforCSSPlugin(options: object)
 |Name|Type|Default|Description|
 |:--:|:--:|:-----:|:----------|
 |**`preview`**|`{Boolean}`|false|Will display a preview of the files that are to be omitted in the console (Will not actually omit)|
-|**`cacheOnWatch`**|`{Boolean}`|false|Whether it should cache the JS filenames that should be omitted, on watch|
 |**`verbose`**|`{Boolean}`|false|Whether it should display which files will be omitted to the console|
 
 ## :fire: Additional Notes :fire:
-While this plugin supports caching the omissible files on watch, it's not ideal to use this plugin during Development. It's highly recommended you only include this plugin when you're building for production. 
+It is highly recommended you only include this plugin when you're building for production. 
