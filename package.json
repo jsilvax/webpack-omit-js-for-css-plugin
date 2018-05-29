@@ -1,6 +1,6 @@
 {
   "name": "webpack-omit-js-for-css-plugin",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file",
   "main": "src/index.js",
   "directories": {
@@ -17,7 +17,7 @@
     "test:cover": "nyc npm test",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepush": "npm run test:cover",
-    "release": "npm run test:cover && git tag $npm_package_version && git commit -am $npm_package_version && git push && git push --tags && npm publish"
+	"release": "npm run test:cover && git tag $npm_package_version && git commit -am $npm_package_version && git push && git push --tags && npm publish"
   },
   "keywords": [
     "webpack",
