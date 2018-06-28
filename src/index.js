@@ -57,8 +57,8 @@ OmitJSforCSSPlugin.prototype.findOmissibleFiles = function (compilation) {
 			module.dependencies.forEach(({ module }) => {
 				if (module) {
 					const { resource } = module;
-					if (resource && !resourceOrigin[resource] && !/ (\bnode_modules\b) /.test(resource) && /\.(css|js)$/g.test(resource)) {
-						/\.(css)$/i.test(resource) ? assetTypeCount.css++ : assetTypeCount.internal++;
+					if (resource && !resourceOrigin[resource]) {
+						/\.(css|less|scss|sass)$/i.test(resource) ? assetTypeCount.css++ : assetTypeCount.internal++;
 					}
 				}
 			});

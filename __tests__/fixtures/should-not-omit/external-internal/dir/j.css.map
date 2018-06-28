@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./__tests__/fixtures/should-not-omit/shared/one.css"],"names":[],"mappings":"AAAA,MAAM,aAAa,E","file":"j.css","sourcesContent":[".one { color : red; }"],"sourceRoot":""}

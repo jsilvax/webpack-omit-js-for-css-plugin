@@ -1,7 +1,7 @@
 {
   "name": "webpack-omit-js-for-css-plugin",
   "version": "3.0.1",
-  "description": "This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once extract-text-plugin extracts inlined CSS into its own .css file",
+  "description": "This plugin will omit bundled JS files for dependencies that are exclusively CSS, which become obsolete once mini-css-extract-plugin extracts inlined CSS into its own .css file",
   "main": "src/index.js",
   "directories": {
     "test": "test"
@@ -12,52 +12,49 @@
   },
   "homepage": "https://github.com/jsilvax/webpack-omit-js-for-css-plugin",
   "scripts": {
-    "test": "mocha --timeout 10000 test/*.test.js",
-    "watch:test": "mocha --timeout 10000 --watch test/*.test.js",
-    "test:cover": "nyc npm test",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "jest",
+    "watch:test": "jest --watch",
+    "test:cover": "jest --coverage",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "prepush": "npm run test:cover",
     "release": "npm run test:cover && git tag $npm_package_version && git commit -am $npm_package_version && git push && git push --tags && npm publish"
   },
   "keywords": [
     "webpack",
     "plugin",
-    "extract-text-plugin",
     "mini-css-extract-plugin",
     "omit-js-for-css-plugin",
     "omit js",
     "webpack omit",
-    "css"
+	"css",
+	"sass",
+	"scss",
+	"less"
   ],
   "author": "Jessica Silva",
   "license": "MIT",
   "peerDependencies": {
-    "webpack": "^4.0.0",
-    "mini-css-extract-plugin": "^0.4.0"
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
-    "chai": "^4.1.1",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "husky": "^0.14.3",
+    "jest": "^23.2.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.1.0",
+    "node-sass": "^4.9.0",
+    "preact": "^8.2.9",
     "rimraf": "^2.6.1",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.18.2",
-    "test-console": "^1.0.0",
     "webpack": "^4.10.1",
     "webpack-cli": "^2.1.4"
   },
   "dependencies": {},
-  "nyc": {
-    "include": [
-      "src/**.js"
-    ],
-    "reporter": [
-      "text",
-      "lcov"
-    ],
-    "check-coverage": true
+  "jest": {
+    "verbose": true,
+    "testRegex": "/__tests__/.*.test.js$"
   }
 }
