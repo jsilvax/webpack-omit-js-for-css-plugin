@@ -5,4 +5,5 @@ test/fixtures/**/dir
 .coveralls.yml
 *.log
 /dist
-.vscode
+.vscode/
+.yarn-error.log

@@ -2,20 +2,20 @@ const webpack = require('webpack');
 const path = require('path');
 const rimraf = require('rimraf');
 const fileShouldExist = require('./utils/file-should-exist.js');
-
+// Internal
 const internalOptions = require('./fixtures/should-not-omit/internal-dep/webpack.config.js');
 const internalDirPath = path.join(__dirname, './fixtures/should-not-omit/internal-dep/dir');
-
+// External 
 const externalOptions = require('./fixtures/should-not-omit/external-dep/webpack.config.js');
 const externalOptionsArr = require('./fixtures/should-not-omit/external-dep/webpack.config.arr.js');
 const externalDirPath = path.join(__dirname, '/fixtures/should-not-omit/external-dep/dir');
-
+// Mixed
 const mixedOptions = require('./fixtures/should-not-omit/mixed-dep/webpack.config.js');
 const mixedDirPath = path.join(__dirname, '/fixtures/should-not-omit/mixed-dep/dir');
 
 describe("JS Dependencies that shouldn't be omitted", () => {
 	describe('Internal', () => {
-		before(done => {
+		beforeEach(done => {
 			rimraf(internalDirPath, () => {
 				done();
 			});
@@ -55,7 +55,7 @@ describe("JS Dependencies that shouldn't be omitted", () => {
 	});
 
 	describe('Mixed', () => {
-		before(done => {
+		beforeEach(done => {
 			rimraf(mixedDirPath, () => {
 				done();
 			});

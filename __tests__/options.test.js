@@ -1,16 +1,11 @@
-const OmitJSforCSSPlugin = require('../src/index.js');
-const expect = require('chai').expect;
-const assert = require('chai').assert;
-const stdout = require('test-console').stdout;
 const rimraf = require('rimraf');
+const path = require('path');
 const webpack = require('webpack');
+const OmitJSforCSSPlugin = require('../src/index.js');
 const fileShouldExist = require('./utils/file-should-exist.js');
 const fileShouldNotExist = require('./utils/file-should-not-exist.js');
-const path = require('path');
-
 const previewOptions = require('./fixtures/options/preview/webpack.config.js');
 const previewDirPath = path.join(__dirname, '/fixtures/options/preview/dir');
-
 const verboseOptions = require('./fixtures/options/verbose/webpack.config.js');
 const verboseDirPath = path.join(__dirname, '/fixtures/options/verbose/dir');
 
@@ -20,53 +15,53 @@ describe('Options', () => {
 			const errorMsg = 'OmitJSforCSSPlugin only takes an options "object" as an argument';
 			expect(() => {
 				new OmitJSforCSSPlugin(5);
-			}).to.throw(errorMsg);
+			}).toThrow(errorMsg);
 			expect(() => {
 				new OmitJSforCSSPlugin('verbose');
-			}).to.throw(errorMsg);
+			}).toThrow(errorMsg);
 			expect(() => {
 				new OmitJSforCSSPlugin(null);
-			}).to.throw(errorMsg);
+			}).toThrow(errorMsg);
 			expect(() => {
 				new OmitJSforCSSPlugin([]);
-			}).to.throw(errorMsg);
+			}).toThrow(errorMsg);
 			done();
 		});
 
 		it('should not throw if a correct argument is passed', done => {
 			expect(() => {
 				new OmitJSforCSSPlugin({});
-			}).to.not.throw();
+			}).not.toThrow();
 			done();
 		});
 	});
 
 	describe('Preview', () => {
 		beforeEach(done => {
+			jest.clearAllMocks();
 			rimraf(previewDirPath, () => {
 				done();
 			});
 		});
 
+		afterAll(() => {
+			console.log.mockRestore();
+		});
+
 		it('should display the files that would be omitted', done => {
-			let inspect = stdout.inspect();
+			console.log = jest.fn();
 
 			webpack(previewOptions, () => {
-				inspect.restore();
 
-				assert.deepEqual(inspect.output, [
-					'PREVIEW File to be omitted for b : b.js\n',
-					'PREVIEW File to be omitted for b : b.js.map\n'
-				]);
+				expect(console.log).toHaveBeenNthCalledWith(1, 'PREVIEW File to be omitted for b : b.js');
+				expect(console.log).toHaveBeenNthCalledWith(2, 'PREVIEW File to be omitted for b : b.js.map');
 
 				done();
 			});
 		});
 
 		it('should not omit files', done => {
-			let ignore = stdout.ignore();
 			webpack(previewOptions, () => {
-				ignore();
 				fileShouldExist(previewDirPath, 'b.js');
 				fileShouldExist(previewDirPath, 'b.js.map');
 				done();
@@ -75,22 +70,23 @@ describe('Options', () => {
 	});
 
 	describe('Verbose', () => {
-		before(done => {
+		beforeEach(done => {
+			jest.clearAllMocks();
 			rimraf(verboseDirPath, () => {
 				done();
 			});
 		});
 
+		afterAll(() => {
+			console.log.mockRestore();
+		});
+
 		it('should display the files that are omitted to console', done => {
-			let inspect = stdout.inspect();
+			console.log = jest.fn();
 
 			webpack(verboseOptions, () => {
-				inspect.restore();
-
-				assert.deepEqual(inspect.output, [
-					'File omitted for b : b.js\n',
-					'File omitted for b : b.js.map\n'
-				]);
+				expect(console.log).toHaveBeenNthCalledWith(1, 'File omitted for b : b.js')
+				expect(console.log).toHaveBeenNthCalledWith(2, 'File omitted for b : b.js.map')
 
 				done();
 			});

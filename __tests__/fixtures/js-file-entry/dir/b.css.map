@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./__tests__/fixtures/js-file-entry/one.css","webpack:///./__tests__/fixtures/js-file-entry/two.css"],"names":[],"mappings":"AAAA,MAAM,aAAa,E;ACAnB,MAAM,cAAc,E","file":"b.css","sourcesContent":[".one { color : red; }",".two { color : blue; }"],"sourceRoot":""}

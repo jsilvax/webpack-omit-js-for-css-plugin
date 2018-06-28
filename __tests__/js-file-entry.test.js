@@ -1,30 +1,30 @@
 const webpack = require('webpack');
 const path = require('path');
 const rimraf = require('rimraf');
-const options = require('./fixtures/css-array-entry/webpack.config.js');
-const dirPath = path.join(__dirname, './fixtures/css-array-entry/dir');
+const options = require('./fixtures/js-file-entry/webpack.config.js');
 const fileShouldNotExist = require('./utils/file-should-not-exist.js');
+const dirPath = path.join(__dirname, './fixtures/js-file-entry/dir');
 
-describe('Array of CSS Dependencies as Entry', () => {
-	before(done => {
+describe('JS file with CSS Dependencies as Entry', () => {
+	beforeEach(done => {
 		rimraf(dirPath, () => {
 			done();
 		});
 	});
 
-	it('JS entry should not exist', done => {
+	it('JS entry file should not exist', done => {
 		webpack(options, () => {
-			fileShouldNotExist(dirPath, '/a.js');
+			fileShouldNotExist(dirPath, '/b.js');
 			done();
 		});
 	});
 
 	it('JS entry source map should not exist', done => {
-		var optionSourceMap = Object.assign({}, options);
+		const optionSourceMap = Object.assign({}, options);
 		optionSourceMap.devtool = 'source-map';
 
 		webpack(optionSourceMap, () => {
-			fileShouldNotExist(dirPath, '/a.js.map');
+			fileShouldNotExist(dirPath, '/b.js.map');
 			done();
 		});
 	});
