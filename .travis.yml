@@ -8,6 +8,7 @@ cache:
 branches:
   only:
     - master
+    - dev-branch
 notifications:
   email: false
 before_script:
