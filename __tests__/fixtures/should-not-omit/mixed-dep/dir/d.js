@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./__tests__/fixtures/should-not-omit/shared/colorful.js":
+/*!***************************************************************!*\
+  !*** ./__tests__/fixtures/should-not-omit/shared/colorful.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const chalk = __webpack_require__(/*! chalk */ "./node_modules/chalk/index.js");
+chalk.green('color it green');
+
+/***/ }),
+
 /***/ "./__tests__/fixtures/should-not-omit/shared/mixed.js":
 /*!************************************************************!*\
   !*** ./__tests__/fixtures/should-not-omit/shared/mixed.js ***!
@@ -93,15 +105,9 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// var one = require('./one.js');
-// var colorful = require('./colorful.js');
-
-const chalk = __webpack_require__(/*! chalk */ "./node_modules/chalk/index.js");
-chalk.green('color it green');
-__webpack_require__(/*! ./one.css */ "./__tests__/fixtures/should-not-omit/shared/one.css");
-__webpack_require__(/*! ./two.css */ "./__tests__/fixtures/should-not-omit/shared/two.css");
-// require('./styles.js');
-
+__webpack_require__(/*! ./colorful.js */ "./__tests__/fixtures/should-not-omit/shared/colorful.js");
+__webpack_require__(/*! ./styles.js */ "./__tests__/fixtures/should-not-omit/shared/styles.js");
+const one = __webpack_require__(/*! ./one.js */ "./__tests__/fixtures/should-not-omit/shared/one.js");
 
 /***/ }),
 
@@ -113,6 +119,31 @@ __webpack_require__(/*! ./two.css */ "./__tests__/fixtures/should-not-omit/share
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./__tests__/fixtures/should-not-omit/shared/one.js":
+/*!**********************************************************!*\
+  !*** ./__tests__/fixtures/should-not-omit/shared/one.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (){
+	return 1;
+};
+
+/***/ }),
+
+/***/ "./__tests__/fixtures/should-not-omit/shared/styles.js":
+/*!*************************************************************!*\
+  !*** ./__tests__/fixtures/should-not-omit/shared/styles.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./one.css */ "./__tests__/fixtures/should-not-omit/shared/one.css");
+__webpack_require__(/*! ./two.css */ "./__tests__/fixtures/should-not-omit/shared/two.css");
 
 /***/ }),
 
