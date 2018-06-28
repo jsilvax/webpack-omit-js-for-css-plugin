@@ -15,7 +15,7 @@
     "test": "jest",
     "watch:test": "jest --watch",
     "test:cover": "jest --coverage",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "prepush": "npm run test:cover",
     "release": "npm run test:cover && git tag $npm_package_version && git commit -am $npm_package_version && git push && git push --tags && npm publish"
   },
