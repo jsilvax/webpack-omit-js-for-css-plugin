@@ -22,15 +22,17 @@ function OmitJSforCSSPlugin(options) {
 
 /**
  * @function omitFiles
- * @param {Object} omitted - The omitted file's details
+ * @param {String} filename - The omitted file name
+ * @param {Object} chunk - The chunk containing the file to omit
  * @param {Object} compilation
  */
-OmitJSforCSSPlugin.prototype.omitFiles = function (omitted, compilation) {
+OmitJSforCSSPlugin.prototype.omitFiles = function (filename, chunk, compilation) {
 	if (this.options.preview) {
-		console.log(`PREVIEW File to be omitted for ${omitted.chunkName} : ${omitted.filename}`);
+		console.log(`PREVIEW File to be omitted for ${chunk.name} : ${filename}`);
 	} else {
-		this.options.verbose && console.log(`File omitted for ${omitted.chunkName} : ${omitted.filename}`);
-		delete compilation.assets[omitted.filename];
+		this.options.verbose && console.log(`File omitted for ${chunk.name} : ${filename}`);
+		chunk.files = chunk.files.filter(name => name !== filename);
+		delete compilation.assets[filename];
 	}
 };
 
@@ -69,12 +71,7 @@ OmitJSforCSSPlugin.prototype.findOmissibleFiles = function (compilation) {
 			// If all dependencies of this entry were CSS, then a JS version of this file will be created
 			// This js file will be empty due to extract-text-webpack-plugin
 			if (assetTypeCount.css > 0 && assetTypeCount.internal === 0 && (/\.(js)$/i.test(filename) || /\.(js).map$/i.test(filename))) {
-				let omitted = {
-					filename: filename,
-					chunkName: chunk.name
-				};
-
-				this.omitFiles(omitted, compilation);
+				this.omitFiles(filename, chunk, compilation);
 			}
 		});
 	});
