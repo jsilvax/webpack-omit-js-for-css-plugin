@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const OmitJSforCSSPlugin = require('../src/index.js');
 const fileShouldExist = require('./utils/file-should-exist.js');
 const fileShouldNotExist = require('./utils/file-should-not-exist.js');
+const chunkShouldContainFile = require('./utils/chunk-should-contain-file.js');
 const previewOptions = require('./fixtures/options/preview/webpack.config.js');
 const previewDirPath = path.join(__dirname, '/fixtures/options/preview/dir');
 const verboseOptions = require('./fixtures/options/verbose/webpack.config.js');
@@ -61,9 +62,11 @@ describe('Options', () => {
 		});
 
 		it('should not omit files', done => {
-			webpack(previewOptions, () => {
+			webpack(previewOptions, (err, stats) => {
 				fileShouldExist(previewDirPath, 'b.js');
+				chunkShouldContainFile(stats, 'b', 'b.js');
 				fileShouldExist(previewDirPath, 'b.js.map');
+				chunkShouldContainFile(stats, 'b', 'b.js.map');
 				done();
 			});
 		});
