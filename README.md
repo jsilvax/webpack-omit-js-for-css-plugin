@@ -6,6 +6,8 @@ This plugin will omit bundled JS files for dependencies that are exclusively CSS
 
 ## Rationale
 
+This plugin should ONLY be used for LEGACY applications, whose goal is to transition into using a build process. This is not an optimized solution. This should ONLY be used as a means to get a legacy application into bundled entries. The configuration here will NOT provide an optimzed solution for an evergreen project. DO NOT USE THIS if you're working on a NEW PROJECT in 2020+. 
+
 In certain cases, you may want to organize some of your CSS dependencies into single files or entry arrays within Webpack. Even though mini-css-extract-plugin extracts CSS into its own .css file, Webpack will still generate a js file that will never be needed. This plugin will omit these types of files before Webpack begins its emitting step, so that you don't have to manually remove them. This plugin is especially useful for Webpack bundles that use a hash in the filename, as these change on every compilation.
 
 Example as a file
